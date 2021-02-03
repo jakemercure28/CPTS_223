@@ -1,4 +1,5 @@
-
+#include "profiles.h"
+#include "game.h"
 #include <iostream>
 #include <fstream>
 

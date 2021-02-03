@@ -82,16 +82,16 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/home/jake/CLionProjects/PA1/cmake-build-debug/profiles.cpp">
-			<Option target="PA1"/>
-		</Unit>
-		<Unit filename="/home/jake/CLionProjects/PA1/cmake-build-debug/profiles.h">
-			<Option target="PA1"/>
-		</Unit>
 		<Unit filename="/home/jake/CLionProjects/PA1/game.h">
 			<Option target="PA1"/>
 		</Unit>
 		<Unit filename="/home/jake/CLionProjects/PA1/main.cpp">
+			<Option target="PA1"/>
+		</Unit>
+		<Unit filename="/home/jake/CLionProjects/PA1/profiles.cpp">
+			<Option target="PA1"/>
+		</Unit>
+		<Unit filename="/home/jake/CLionProjects/PA1/profiles.h">
 			<Option target="PA1"/>
 		</Unit>
 		<Unit filename="/home/jake/CLionProjects/PA1/CMakeLists.txt">

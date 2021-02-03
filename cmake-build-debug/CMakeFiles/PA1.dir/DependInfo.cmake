@@ -5,7 +5,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
   "/home/jake/CLionProjects/PA1/main.cpp" "/home/jake/CLionProjects/PA1/cmake-build-debug/CMakeFiles/PA1.dir/main.cpp.o"
-  "/home/jake/CLionProjects/PA1/cmake-build-debug/profiles.cpp" "/home/jake/CLionProjects/PA1/cmake-build-debug/CMakeFiles/PA1.dir/profiles.cpp.o"
+  "/home/jake/CLionProjects/PA1/profiles.cpp" "/home/jake/CLionProjects/PA1/cmake-build-debug/CMakeFiles/PA1.dir/profiles.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
