@@ -1,5 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/PA1.dir/main.cpp.o"
+  "CMakeFiles/PA1.dir/profiles.cpp.o"
   "PA1"
   "PA1.pdb"
 )
