@@ -170,6 +170,33 @@ main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/PA1.dir/build.make CMakeFiles/PA1.dir/main.cpp.s
 .PHONY : main.cpp.s
 
+profiles.o: profiles.cpp.o
+
+.PHONY : profiles.o
+
+# target to build an object file
+profiles.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PA1.dir/build.make CMakeFiles/PA1.dir/profiles.cpp.o
+.PHONY : profiles.cpp.o
+
+profiles.i: profiles.cpp.i
+
+.PHONY : profiles.i
+
+# target to preprocess a source file
+profiles.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PA1.dir/build.make CMakeFiles/PA1.dir/profiles.cpp.i
+.PHONY : profiles.cpp.i
+
+profiles.s: profiles.cpp.s
+
+.PHONY : profiles.s
+
+# target to generate assembly for a file
+profiles.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PA1.dir/build.make CMakeFiles/PA1.dir/profiles.cpp.s
+.PHONY : profiles.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -182,6 +209,9 @@ help:
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... profiles.o"
+	@echo "... profiles.i"
+	@echo "... profiles.s"
 .PHONY : help
 
 
