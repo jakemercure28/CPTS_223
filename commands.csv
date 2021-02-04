@@ -1,1 +1,1 @@
-pwd,"It prints the path of the working directory, starting from the root",ls,"Lists files and directories within the file system",mkdir,"Allows the user to create directories"
+pwd,"It prints the path of the working directory starting from the root",ls,"Lists files and directories within the file system",mkdir,"Allows the user to create directories"

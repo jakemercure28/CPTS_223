@@ -8,12 +8,16 @@
 profiles::profiles(){    // initialization
 
     fstream input;
-    input.open("commands.csv", ios::in);
+
+    input.open("/home/jake/CLionProjects/PA1/commands.csv", ios::in);
+
+    if(input.fail())
+        printf("Error opening file");
 
     int i = 0;
     string temp1, temp2;    //stores temp data from file input
 
-    while(!input.eof()){
+    while(input){
 
         getline(input, temp1, ',');
         list_of_commands[i].cmd =  temp1;
