@@ -3,4 +3,4 @@ project(PA1)
 
 set(CMAKE_CXX_STANDARD 11)
 
-add_executable(PA1 main.cpp game.h profiles.h profiles.cpp)
+add_executable(PA1 main.cpp game.h profiles.h profiles.cpp game.cpp)

@@ -82,6 +82,9 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/home/jake/CLionProjects/PA1/game.cpp">
+			<Option target="PA1"/>
+		</Unit>
 		<Unit filename="/home/jake/CLionProjects/PA1/game.h">
 			<Option target="PA1"/>
 		</Unit>
