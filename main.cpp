@@ -1,11 +1,12 @@
 #include "profiles.h"
 #include "game.h"
+#include "cstdlib"
 
 using namespace std;
 
 int main() {
 
-    profiles profile1;
+    srand(time(nullptr));
 
     game g1;
     int option;

@@ -9,18 +9,20 @@
 using namespace std;
 class game
 {
-private:
+protected:
     string username;
+    int question_count;
     int score;
 
 public:
     game();
 
-    void display_rules();
+    static void display_rules();
     void play_game();
     void load_previous_game();
     void add_command();
     void remove_command();
+    void set_score(int);
 };
 
 #endif //PA1_GAME_H

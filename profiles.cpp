@@ -12,7 +12,7 @@ profiles::profiles(){    // initialization
     input.open("/home/jake/CLionProjects/PA1/commands.csv", ios::in);
 
     if(input.fail())
-        printf("Error opening file");
+        cout << "Error opening file";
 
     int i = 0;
     string temp1, temp2;    //stores temp data from file input
@@ -27,4 +27,9 @@ profiles::profiles(){    // initialization
 
         i++;
     }
+}
+
+command profiles::get_random_command() {
+
+    return list_of_commands[rand() % 30];
 }
