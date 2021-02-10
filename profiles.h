@@ -13,11 +13,18 @@ struct command{
 
 class profiles{
 private:
-    command list_of_commands[50];
+    struct listNode{
+        command command_data;
+        listNode* next;
+    };
 
+    listNode *head;
 public:
 
     profiles();
+    void insert_at_front(command cmd_data);
+    void remove_node(int location);
+
     command get_random_command();
 
 

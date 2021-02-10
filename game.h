@@ -5,10 +5,11 @@
 #ifndef PA1_GAME_H
 #define PA1_GAME_H
 #include <iostream>
+#include "profiles.h"
 
 using namespace std;
-class game
-{
+class game:public profiles{
+
 protected:
     string username;
     int question_count;
