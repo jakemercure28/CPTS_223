@@ -39,7 +39,7 @@ void game::display_rules(){
 void game::play_game() {
     int user_answer;
     command c1, c2, c3;
-    profiles p1;
+    game p1;
 
     cout << "What is your name?" << endl;
     cin >> username;
@@ -108,6 +108,9 @@ void game::add_command() {
     cout << "Enter command description" << endl;
     cin >> new_cmd.description;
 
+}
+void game::insert_at_front(command new_cmd) {
+
     listNode* new_node = new listNode();
 
     new_node->command_data = new_cmd;
@@ -115,7 +118,6 @@ void game::add_command() {
 
     head = new_node;
 }
-
 void game::remove_command(int location) {
     command current;
     listNode* temp = head;

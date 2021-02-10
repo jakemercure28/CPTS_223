@@ -37,6 +37,7 @@ public:
     void play_game();
     void load_previous_game();
     void add_command();
+    void insert_at_front(command new_cmd);
     void remove_command(int location);
     void set_score(int);
     command get_random_command();
