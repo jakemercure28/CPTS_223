@@ -40,6 +40,10 @@ game::game(){
     score = 0;
 }
 
+game::~game(){
+    delete head;
+}
+
 void game::display_rules(){
     cout << "Insert summary here.";
 }
@@ -121,6 +125,28 @@ void game::play_game() {
 
 void game::load_previous_game() {
 
+    fstream input;
+
+    input.open("/home/jake/CLionProjects/PA1/profiles.csv", ios::in);
+
+    if(input.fail())
+        cout << "Error opening file";
+
+    int i = 0;
+    string line;    //stores temp data from file input
+    string temp1, temp2;
+
+    getline(input, line);
+
+    input.close();
+
+    stringstream ss(line);
+
+    getline(ss, temp1, ',');
+    getline(ss, temp2, ',');
+
+    username = temp1;
+    score = stoi(temp2);
 }
 
 void game::add_command() {
@@ -133,6 +159,7 @@ void game::add_command() {
     cin >> new_cmd.description;
 
 }
+
 void game::insert_at_front(command new_cmd) {
 
     listNode* new_node = new listNode();

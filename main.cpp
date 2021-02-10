@@ -1,4 +1,19 @@
-
+/*
+ * ADVANTAGES/DISADVANTAGES LINKED LIST:
+ *      Advantage:    manual memory management, ablity to dynamically allocate memory as needed.
+ *                    Allows for more or less commands to be entered into the game in this situation.
+ *      Disadvantage: More control can lead to more errors, like memory leaks where unused memory is being
+ *                    allocated for no good use. There could be a linked list of 1000 nodes for a csv of only 30 entities.
+ *
+ * ADVANTAGES/DISADVANTAGES ARRAY:
+ *      Advantage:    The profiles can be stored in a set length amount of memory space. Each profile will only
+ *                    take up a specified amount of memory depending on the data type the array is.
+ *      Disadvantage: The array must convert the score of the user to a char to fit in a string datatype array.
+ *                    The name of the user is a string and thus one or the other must convert. Arrays cant store more
+ *                    than 1 data type per array.
+ *
+ *
+ */
 #include "game.h"
 #include "cstdlib"
 
@@ -18,7 +33,6 @@ int main() {
 
         switch(option)
         {
-
             case 1: g1.display_rules();
             break;
             case 2: g1.play_game();

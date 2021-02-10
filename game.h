@@ -33,6 +33,7 @@ class game{
 
 public:
     game();
+    ~game();
 
     static void display_rules();
     void play_game();
