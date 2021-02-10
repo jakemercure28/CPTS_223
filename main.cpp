@@ -1,6 +1,6 @@
 /*
  * ADVANTAGES/DISADVANTAGES LINKED LIST:
- *      Advantage:    manual memory management, ablity to dynamically allocate memory as needed.
+ *      Advantage:    Manual memory management, ablity to dynamically allocate memory as needed.
  *                    Allows for more or less commands to be entered into the game in this situation.
  *      Disadvantage: More control can lead to more errors, like memory leaks where unused memory is being
  *                    allocated for no good use. There could be a linked list of 1000 nodes for a csv of only 30 entities.
@@ -36,7 +36,7 @@ int main() {
             case 1: g1.display_rules();
             break;
             case 2: g1.play_game();
-            cout << "Game over!" << "Score: " << g1.get_score();
+            cout << "Game over!" << "Score: " << g1.get_score() << endl << "Choose an option." << endl;
             break;
             case 3: g1.load_previous_game();
             break;

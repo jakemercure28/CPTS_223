@@ -8,7 +8,7 @@ game::game(){
 
     fstream input;
 
-    input.open("/home/jake/CLionProjects/PA1/commands.csv", ios::in);
+    input.open("commands.csv", ios::in);
 
     if(input.fail())
         cout << "Error opening file";
@@ -127,7 +127,7 @@ void game::load_previous_game() {
 
     fstream input;
 
-    input.open("/home/jake/CLionProjects/PA1/profiles.csv", ios::in);
+    input.open("profiles.csv", ios::in);
 
     if(input.fail())
         cout << "Error opening file";
@@ -158,6 +158,9 @@ void game::add_command() {
     cout << "Enter command description" << endl;
     cin >> new_cmd.description;
 
+    fstream file;
+
+    file.open("profiles.csv", ios::in);
 }
 
 void game::insert_at_front(command new_cmd) {
@@ -174,7 +177,7 @@ void game::remove_command(string cmd_name) {
 
     fstream input;
 
-    input.open("/home/jake/CLionProjects/PA1/commands.csv", ios::out);
+    input.open("commands.csv", ios::out);
 
     if(input.fail())
         cout << "Error opening file";
@@ -198,15 +201,6 @@ void game::remove_command(string cmd_name) {
 
         i++;
     }while(i < 35);
-/*
-    for(int i = 0; temp != nullptr && i < location-1; i++)
-        temp = temp->next;
-
-    listNode* next = temp->next->next;
-    delete (temp->next);
-
-    temp->next = next;*/
-
 }
 
 void game:: set_score(int val){
@@ -233,11 +227,11 @@ int game::get_score() {
 }
 
 void game::exit(){
+
     fstream outfile;
+    string line;
 
-    outfile.open("/home/jake/CLionProjects/PA1/profiles.csv", ios_base::app);
-
+    outfile.open("profiles.csv", ios_base::app);
     outfile << username << "," << score << "," << endl;
-
     outfile.close();
 }
