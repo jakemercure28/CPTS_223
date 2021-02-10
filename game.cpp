@@ -3,6 +3,7 @@
 //
 #include "game.h"
 
+
 game::game(){
 
     fstream input;
@@ -13,19 +14,26 @@ game::game(){
         cout << "Error opening file";
 
     int i = 0;
-    string temp1, temp2;    //stores temp data from file input
+    string line;    //stores temp data from file input
+    string temp1, temp2;
     command current_command;
 
     while(input){
-        getline(input, temp1, ',');
+        getline(input, line);
+
+        stringstream ss(line);
+
+        getline(ss, temp1, ',');
         current_command.cmd = temp1;
 
-        getline(input, temp2, ',');
+        getline(ss, temp2, ',');
         current_command.description = temp2;
 
         insert_at_front(current_command);
         i++;
     }
+
+    input.close();
 
     question_count = 0;
     username = "";
@@ -59,7 +67,6 @@ void game::play_game() {
         c3 = p1.get_random_command();
     } while (c1.cmd == c2.cmd || c2.cmd == c3.cmd || c1.cmd == c3.cmd);
 
-    do { // check answer for for correct input loop
         switch (rand() % 3) {
 
             case 1:
@@ -72,6 +79,7 @@ void game::play_game() {
                 if (user_answer == 1) {
                     cout << "Correct answer! 5 points awarded." << endl;
                     correct_answer = true;
+                    score+= 5;
                 }
                 break;
             case 2:
@@ -84,6 +92,7 @@ void game::play_game() {
                 if (user_answer == 3) {
                     cout << "Correct answer! 5 points awarded." << endl;
                     correct_answer = true;
+                    score+= 5;
                 }
                 break;
             case 3:
@@ -96,15 +105,18 @@ void game::play_game() {
                 if (user_answer == 2) {
                     cout << "Correct answer! 5 points awarded." << endl;
                     correct_answer = true;
+                    score+= 5;
                 }
+                break;
         }
-    } while (user_answer < 1 || user_answer > 3);
 
-    if (!correct_answer)
-        cout << "Incorrect answer!" << endl;
+        if (!correct_answer) {
+        cout << "Incorrect answer! 5 points taken." << endl;
+        score -= 5;
+         }
 
     count++;
-}while(count <= question_count);
+    }while(count < question_count);
 }
 
 void game::load_previous_game() {
@@ -130,22 +142,43 @@ void game::insert_at_front(command new_cmd) {
 
     head = new_node;
 }
-void game::remove_command(int location) {
-    command current;
-    listNode* temp = head;
 
-    if (location == 0) {
-        current = head->command_data;
-        delete temp;
-    }
+void game::remove_command(string cmd_name) {
 
+    fstream input;
+
+    input.open("/home/jake/CLionProjects/PA1/commands.csv", ios::out);
+
+    if(input.fail())
+        cout << "Error opening file";
+
+    int i = 0;
+    string line;    //stores temp data from file input
+    string temp1, temp2;
+
+    do{
+        getline(input, line);
+
+        stringstream ss(line);
+
+        getline(ss, temp1, ',');
+
+
+        if(temp1 == cmd_name)
+            input << endl;
+
+        input << line;
+
+        i++;
+    }while(i < 35);
+/*
     for(int i = 0; temp != nullptr && i < location-1; i++)
         temp = temp->next;
 
     listNode* next = temp->next->next;
     delete (temp->next);
 
-    temp->next = next;
+    temp->next = next;*/
 
 }
 
@@ -166,4 +199,18 @@ command game::get_random_command() {
         current = current->next;
         i++;
     }
+}
+
+int game::get_score() {
+    return score;
+}
+
+void game::exit(){
+    fstream outfile;
+
+    outfile.open("/home/jake/CLionProjects/PA1/profiles.csv", ios_base::app);
+
+    outfile << username << "," << score << "," << endl;
+
+    outfile.close();
 }
