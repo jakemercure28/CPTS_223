@@ -35,8 +35,9 @@ game::game(){
 
     input.close();
 
+    cout << "What is your name?" << endl;
+    cin >> username;
     question_count = 0;
-    username = "";
     score = 0;
 }
 
@@ -49,13 +50,10 @@ void game::display_rules(){
 }
 
 void game::play_game() {
-    int user_answer, count = 0;
+    int user_answer, shuffle, count = 0;
     bool correct_answer = false;
     command c1, c2, c3;
-    game p1;
 
-    cout << "What is your name?" << endl;
-    cin >> username;
     cout << "Great! Lets play the game." << endl;
 
     do { // check question count bounds
@@ -65,14 +63,15 @@ void game::play_game() {
 
     do{ // run game loop until out of questions
 
-    do { // get different random commands for each answer
-        c1 = p1.get_random_command();
-        c2 = p1.get_random_command();
-        c3 = p1.get_random_command();
-    } while (c1.cmd == c2.cmd || c2.cmd == c3.cmd || c1.cmd == c3.cmd);
+        do {
+            // get different random commands for each answer
+            c1 = get_random_command();
+            c2 = get_random_command();
+            c3 = get_random_command();
+        }while (c1.cmd == c2.cmd || c2.cmd == c3.cmd || c1.cmd == c3.cmd);
 
-        switch (rand() % 3) {
-
+        shuffle = (rand() % 3)+1;
+        switch (shuffle) { // shuffles the answer between 3 formats
             case 1:
                 cout << c1.cmd << endl;
                 cout << "\t\t\t\t1." << c1.description << endl;
@@ -117,7 +116,7 @@ void game::play_game() {
         if (!correct_answer) {
         cout << "Incorrect answer! 5 points taken." << endl;
         score -= 5;
-         }
+        }
 
     count++;
     }while(count < question_count);
@@ -147,6 +146,7 @@ void game::load_previous_game() {
 
     username = temp1;
     score = stoi(temp2);
+    cout << "Game loaded for " << username << "!" << endl;
 }
 
 void game::add_command() {
