@@ -37,7 +37,8 @@ void game::display_rules(){
 }
 
 void game::play_game() {
-    int user_answer;
+    int user_answer, count = 0;
+    bool correct_answer = false;
     command c1, c2, c3;
     game p1;
 
@@ -45,18 +46,20 @@ void game::play_game() {
     cin >> username;
     cout << "Great! Lets play the game." << endl;
 
-    do {
+    do { // check question count bounds
         cout << "How many questions do you want to answer? (5-30)" << endl;
         cin >> question_count;
-    }while(question_count < 5 || question_count > 30);
+    } while (question_count < 5 || question_count > 30);
 
-    do {
+    do{ // run game loop until out of questions
+
+    do { // get different random commands for each answer
         c1 = p1.get_random_command();
         c2 = p1.get_random_command();
         c3 = p1.get_random_command();
-    }while(c1.cmd == c2.cmd || c2.cmd == c3.cmd || c1.cmd == c3.cmd);
+    } while (c1.cmd == c2.cmd || c2.cmd == c3.cmd || c1.cmd == c3.cmd);
 
-    do {
+    do { // check answer for for correct input loop
         switch (rand() % 3) {
 
             case 1:
@@ -66,9 +69,10 @@ void game::play_game() {
                 cout << "\t\t\t\t3." << c3.description << endl;
                 cin >> user_answer;
 
-                if (user_answer == 1)
+                if (user_answer == 1) {
                     cout << "Correct answer! 5 points awarded." << endl;
-
+                    correct_answer = true;
+                }
                 break;
             case 2:
                 cout << c1.cmd << endl;
@@ -77,9 +81,10 @@ void game::play_game() {
                 cout << "\t\t\t\t3." << c1.description << endl;
                 cin >> user_answer;
 
-                if (user_answer == 3)
+                if (user_answer == 3) {
                     cout << "Correct answer! 5 points awarded." << endl;
-
+                    correct_answer = true;
+                }
                 break;
             case 3:
                 cout << c1.cmd << endl;
@@ -88,11 +93,18 @@ void game::play_game() {
                 cout << "\t\t\t\t3." << c2.description << endl;
                 cin >> user_answer;
 
-                if (user_answer == 2)
+                if (user_answer == 2) {
                     cout << "Correct answer! 5 points awarded." << endl;
+                    correct_answer = true;
+                }
         }
-    }while(user_answer >=1 && user_answer <= 3);
+    } while (user_answer >= 1 && user_answer <= 3);
 
+    if (!correct_answer)
+        cout << "Incorrect answer!" << endl;
+
+    count++;
+}while(count <= question_count);
 }
 
 void game::load_previous_game() {
