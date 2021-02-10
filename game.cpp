@@ -98,7 +98,7 @@ void game::play_game() {
                     correct_answer = true;
                 }
         }
-    } while (user_answer >= 1 && user_answer <= 3);
+    } while (user_answer < 1 || user_answer > 3);
 
     if (!correct_answer)
         cout << "Incorrect answer!" << endl;
