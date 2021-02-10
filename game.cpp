@@ -3,8 +3,7 @@
 //
 #include "game.h"
 
-
-game::game(){
+game::game(){ //constructor
 
     fstream input;
 
@@ -13,28 +12,30 @@ game::game(){
     if(input.fail())
         cout << "Error opening file";
 
+    // data types used to parse csv
     int i = 0;
     string line;    //stores temp data from file input
     string temp1, temp2;
     command current_command;
 
-    while(input){
+    while(input){ // reading file
         getline(input, line);
 
-        stringstream ss(line);
+        stringstream ss(line); //string stream splits the string to token each entity
 
-        getline(ss, temp1, ',');
+        getline(ss, temp1, ','); // command
         current_command.cmd = temp1;
 
-        getline(ss, temp2, ',');
+        getline(ss, temp2, ','); // description
         current_command.description = temp2;
 
-        insert_at_front(current_command);
+        insert_at_front(current_command); // insert front of linked list
         i++;
     }
 
-    input.close();
+    input.close(); //close file object
 
+    // initialize game object
     cout << "What is your name?" << endl;
     cin >> username;
     question_count = 0;
@@ -46,7 +47,9 @@ game::~game(){
 }
 
 void game::display_rules(){
-    cout << "Insert summary here.";
+    cout << endl << "Match the linux command to the corresponding action on using the 1,2, and 3 keys" << endl;
+    cout << "There are about 30 different commands available in the quiz. 5 points are awarded for correct" << endl;
+    cout << "answers, 5 points are taken away for incorrect. You can also add/remove commands if needed. Good luck!" << endl;
 }
 
 void game::play_game() {
