@@ -6,7 +6,17 @@
 
 #IncludeRegexTransform: 
 
-/home/jake/CLionProjects/PA1/main.cpp
+/home/jake/CLionProjects/PA1/game.cpp
+game.h
+/home/jake/CLionProjects/PA1/game.h
+
+/home/jake/CLionProjects/PA1/game.h
+string
+-
+fstream
+-
 iostream
+-
+sstream
 -
 
