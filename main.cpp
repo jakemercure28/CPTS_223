@@ -18,12 +18,12 @@
 #include "cstdlib"
 
 using namespace std;
-
 int main() {
 
     srand(time(nullptr));
 
     game g1;
+    string name;
     int option;
     do{
         cout << "1. Game Rules\n2. Play Game\n3. Load Previous Game\n4. Add Command\n";
@@ -42,7 +42,9 @@ int main() {
             break;
             case 4: g1.add_command();
             break;
-            case 5: g1.remove_command("ls");
+            case 5: cout << "Enter command name to remove" << endl;
+            cin >> name;
+                g1.remove_command(name);
             break;
             case 6: g1.exit();
         }

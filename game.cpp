@@ -116,33 +116,32 @@ void game::play_game() {
                 break;
         }
 
-        if (!correct_answer) {
+        if (!correct_answer) { // incorect answer subtract points
         cout << "Incorrect answer! 5 points taken." << endl;
         score -= 5;
         }
 
     count++;
-    }while(count < question_count);
+    }while(count < question_count); // loop until questions are done being answered
 }
 
 void game::load_previous_game() {
 
     fstream input;
-
     input.open("profiles.csv", ios::in);
 
-    if(input.fail())
-        cout << "Error opening file";
+    if (input.fail())
+        cout << "Error opening file"; //error checking for file opening failures
 
     int i = 0;
     string line;    //stores temp data from file input
     string temp1, temp2;
 
-    getline(input, line);
+    getline(input, line); //gets line from the profiles csv file
 
-    input.close();
+    input.close(); //closes file stream to profiles.csv
 
-    stringstream ss(line);
+    stringstream ss(line); // string stream used to separate name and score
 
     getline(ss, temp1, ',');
     getline(ss, temp2, ',');
@@ -167,7 +166,7 @@ void game::add_command() {
     if(file.fail())
         cout << "Error opening file";
 
-    file << endl << new_cmd.cmd << "," << new_cmd.description;
+    file << new_cmd.cmd << "," << new_cmd.description << "," << endl;
 
     file.close();
 }
@@ -182,34 +181,36 @@ void game::insert_at_front(command new_cmd) {
     head = new_node;
 }
 
-void game::remove_command(string cmd_name) {
+void game::remove_command(string input) {
 
-    fstream input;
+    fstream output;
+    output.open("commands.csv", ios::out);
 
-    input.open("commands.csv", ios::out);
-
-    if(input.fail())
+    if(output.fail())
         cout << "Error opening file";
 
-    int i = 0;
-    string line;    //stores temp data from file input
-    string temp1, temp2;
+    listNode* temp = head;
 
-    do{
-        getline(input, line);
+    while(temp->next->command_data.cmd != input) // search by name
+        temp = temp->next;
 
-        stringstream ss(line);
+        if(temp->next == nullptr)
+            return; //if not found, then return
 
-        getline(ss, temp1, ',');
+        listNode *next;
+        next = temp->next->next; //move the node over 1
 
+        next = temp->next; // move the node back over
 
-        if(temp1 == cmd_name)
-            input << endl;
+    delete temp->next;
 
-        input << line;
+    temp->next = next;
 
-        i++;
-    }while(i < 35);
+    while(head != nullptr) { //print out list putting head back to the front
+        output << head->command_data.cmd << "," << head->command_data.description << "," << endl;
+        head = head->next;
+    }
+    output.close();
 }
 
 void game:: set_score(int val){
