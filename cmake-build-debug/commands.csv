@@ -35,3 +35,4 @@ exit,exits the currently running shell,
 clear,clears terminal screen,
 find,finds files or directories,
 finger,gives user information currently logged in
+cmd,test,

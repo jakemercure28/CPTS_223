@@ -41,7 +41,7 @@ public:
     void add_command();
     void exit();
     void insert_at_front(command new_cmd);
-    void remove_command(string cmd_name);
+    void remove_command(string input);
 
     void set_score(int);
 

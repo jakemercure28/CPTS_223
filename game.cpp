@@ -3,40 +3,42 @@
 //
 #include "game.h"
 
-
-game::game(){
+game::game(){ //constructor
 
     fstream input;
 
-    input.open("/home/jake/CLionProjects/PA1/commands.csv", ios::in);
+    input.open("commands.csv", ios::in);
 
     if(input.fail())
         cout << "Error opening file";
 
+    // data types used to parse csv
     int i = 0;
     string line;    //stores temp data from file input
     string temp1, temp2;
     command current_command;
 
-    while(input){
+    while(input){ // reading file
         getline(input, line);
 
-        stringstream ss(line);
+        stringstream ss(line); //string stream splits the string to token each entity
 
-        getline(ss, temp1, ',');
+        getline(ss, temp1, ','); // command
         current_command.cmd = temp1;
 
-        getline(ss, temp2, ',');
+        getline(ss, temp2, ','); // description
         current_command.description = temp2;
 
-        insert_at_front(current_command);
+        insert_at_front(current_command); // insert front of linked list
         i++;
     }
 
-    input.close();
+    input.close(); //close file object
 
+    // initialize game object
+    cout << "What is your name?" << endl;
+    cin >> username;
     question_count = 0;
-    username = "";
     score = 0;
 }
 
@@ -45,17 +47,16 @@ game::~game(){
 }
 
 void game::display_rules(){
-    cout << "Insert summary here.";
+    cout << endl << "Match the linux command to the corresponding action on using the 1,2, and 3 keys" << endl;
+    cout << "There are about 30 different commands available in the quiz. 5 points are awarded for correct" << endl;
+    cout << "answers, 5 points are taken away for incorrect. You can also add/remove commands if needed. Good luck!" << endl;
 }
 
 void game::play_game() {
-    int user_answer, count = 0;
+    int user_answer, shuffle, count = 0;
     bool correct_answer = false;
     command c1, c2, c3;
-    game p1;
 
-    cout << "What is your name?" << endl;
-    cin >> username;
     cout << "Great! Lets play the game." << endl;
 
     do { // check question count bounds
@@ -65,14 +66,15 @@ void game::play_game() {
 
     do{ // run game loop until out of questions
 
-    do { // get different random commands for each answer
-        c1 = p1.get_random_command();
-        c2 = p1.get_random_command();
-        c3 = p1.get_random_command();
-    } while (c1.cmd == c2.cmd || c2.cmd == c3.cmd || c1.cmd == c3.cmd);
+        do {
+            // get different random commands for each answer
+            c1 = get_random_command();
+            c2 = get_random_command();
+            c3 = get_random_command();
+        }while (c1.cmd == c2.cmd || c2.cmd == c3.cmd || c1.cmd == c3.cmd);
 
-        switch (rand() % 3) {
-
+        shuffle = (rand() % 3)+1;
+        switch (shuffle) { // shuffles the answer between 3 formats
             case 1:
                 cout << c1.cmd << endl;
                 cout << "\t\t\t\t1." << c1.description << endl;
@@ -114,39 +116,39 @@ void game::play_game() {
                 break;
         }
 
-        if (!correct_answer) {
+        if (!correct_answer) { // incorect answer subtract points
         cout << "Incorrect answer! 5 points taken." << endl;
         score -= 5;
-         }
+        }
 
     count++;
-    }while(count < question_count);
+    }while(count < question_count); // loop until questions are done being answered
 }
 
 void game::load_previous_game() {
 
     fstream input;
+    input.open("profiles.csv", ios::in);
 
-    input.open("/home/jake/CLionProjects/PA1/profiles.csv", ios::in);
-
-    if(input.fail())
-        cout << "Error opening file";
+    if (input.fail())
+        cout << "Error opening file"; //error checking for file opening failures
 
     int i = 0;
     string line;    //stores temp data from file input
     string temp1, temp2;
 
-    getline(input, line);
+    getline(input, line); //gets line from the profiles csv file
 
-    input.close();
+    input.close(); //closes file stream to profiles.csv
 
-    stringstream ss(line);
+    stringstream ss(line); // string stream used to separate name and score
 
     getline(ss, temp1, ',');
     getline(ss, temp2, ',');
 
     username = temp1;
     score = stoi(temp2);
+    cout << "Game loaded for " << username << "!" << endl;
 }
 
 void game::add_command() {
@@ -158,6 +160,15 @@ void game::add_command() {
     cout << "Enter command description" << endl;
     cin >> new_cmd.description;
 
+    fstream file;
+    file.open("commands.csv", ios::app);
+
+    if(file.fail())
+        cout << "Error opening file";
+
+    file << new_cmd.cmd << "," << new_cmd.description << "," << endl;
+
+    file.close();
 }
 
 void game::insert_at_front(command new_cmd) {
@@ -170,43 +181,36 @@ void game::insert_at_front(command new_cmd) {
     head = new_node;
 }
 
-void game::remove_command(string cmd_name) {
+void game::remove_command(string input) {
 
-    fstream input;
+    fstream output;
+    output.open("commands.csv", ios::out);
 
-    input.open("/home/jake/CLionProjects/PA1/commands.csv", ios::out);
-
-    if(input.fail())
+    if(output.fail())
         cout << "Error opening file";
 
-    int i = 0;
-    string line;    //stores temp data from file input
-    string temp1, temp2;
+    listNode* temp = head;
 
-    do{
-        getline(input, line);
-
-        stringstream ss(line);
-
-        getline(ss, temp1, ',');
-
-
-        if(temp1 == cmd_name)
-            input << endl;
-
-        input << line;
-
-        i++;
-    }while(i < 35);
-/*
-    for(int i = 0; temp != nullptr && i < location-1; i++)
+    while(temp->next->command_data.cmd != input) // search by name
         temp = temp->next;
 
-    listNode* next = temp->next->next;
-    delete (temp->next);
+        if(temp->next == nullptr)
+            return; //if not found, then return
 
-    temp->next = next;*/
+        listNode *next;
+        next = temp->next->next; //move the node over 1
 
+        next = temp->next; // move the node back over
+
+    delete temp->next;
+
+    temp->next = next;
+
+    while(head != nullptr) { //print out list putting head back to the front
+        output << head->command_data.cmd << "," << head->command_data.description << "," << endl;
+        head = head->next;
+    }
+    output.close();
 }
 
 void game:: set_score(int val){
@@ -233,11 +237,11 @@ int game::get_score() {
 }
 
 void game::exit(){
+
     fstream outfile;
+    string line;
 
-    outfile.open("/home/jake/CLionProjects/PA1/profiles.csv", ios_base::app);
-
+    outfile.open("profiles.csv", ios_base::app);
     outfile << username << "," << score << "," << endl;
-
     outfile.close();
 }
