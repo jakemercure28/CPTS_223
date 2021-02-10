@@ -18,6 +18,7 @@ int main() {
 
         switch(option)
         {
+
             case 1: g1.display_rules();
             break;
             case 2: g1.play_game();
