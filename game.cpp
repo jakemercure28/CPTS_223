@@ -2,9 +2,30 @@
 // Created by jake on 2/3/21.
 //
 #include "game.h"
-#include "profiles.h"
 
 game::game(){
+
+    fstream input;
+
+    input.open("/home/jake/CLionProjects/PA1/commands.csv", ios::in);
+
+    if(input.fail())
+        cout << "Error opening file";
+
+    int i = 0;
+    string temp1, temp2;    //stores temp data from file input
+    command current_command;
+
+    while(input){
+        getline(input, temp1, ',');
+        current_command.cmd = temp1;
+
+        getline(input, temp2, ',');
+        current_command.description = temp2;
+
+        insert_at_front(current_command);
+        i++;
+    }
 
     question_count = 0;
     username = "";
@@ -71,6 +92,7 @@ void game::play_game() {
                     cout << "Correct answer! 5 points awarded." << endl;
         }
     }while(user_answer >=1 && user_answer <= 3);
+
 }
 
 void game::load_previous_game() {
@@ -78,6 +100,7 @@ void game::load_previous_game() {
 }
 
 void game::add_command() {
+
     command new_cmd;
     cout << "Enter command name: " << endl;
     cin >> new_cmd.cmd;
@@ -85,14 +108,48 @@ void game::add_command() {
     cout << "Enter command description" << endl;
     cin >> new_cmd.description;
 
-    insert_at_front(new_cmd);
+    listNode* new_node = new listNode();
+
+    new_node->command_data = new_cmd;
+    new_node->next = head;
+
+    head = new_node;
 }
 
-void game::remove_command() {
+void game::remove_command(int location) {
+    command current;
+    listNode* temp = head;
 
+    if (location == 0) {
+        current = head->command_data;
+        delete temp;
+    }
+
+    for(int i = 0; temp != nullptr && i < location-1; i++)
+        temp = temp->next;
+
+    listNode* next = temp->next->next;
+    delete (temp->next);
+
+    temp->next = next;
 
 }
 
 void game:: set_score(int val){
     score = val;
+}
+
+command game::get_random_command() {
+
+    int location = rand() % 35;
+    int i = 0;
+    listNode* current = head;
+
+    while(current != nullptr){
+        if(i == location){
+            return current->command_data;
+        }
+        current = current->next;
+        i++;
+    }
 }

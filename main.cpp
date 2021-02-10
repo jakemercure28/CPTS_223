@@ -1,4 +1,4 @@
-#include "profiles.h"
+
 #include "game.h"
 #include "cstdlib"
 
@@ -26,7 +26,7 @@ int main() {
             break;
             case 4: g1.add_command();
             break;
-            case 5: g1.remove_command();
+           // case 5: g1.remove_command(del_command);
             break;
             default: break;
         }
