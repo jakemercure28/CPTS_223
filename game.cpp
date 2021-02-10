@@ -159,8 +159,14 @@ void game::add_command() {
     cin >> new_cmd.description;
 
     fstream file;
+    file.open("commands.csv", ios::app);
 
-    file.open("profiles.csv", ios::in);
+    if(file.fail())
+        cout << "Error opening file";
+
+    file << endl << new_cmd.cmd << "," << new_cmd.description;
+
+    file.close();
 }
 
 void game::insert_at_front(command new_cmd) {
