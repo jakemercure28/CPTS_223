@@ -6,7 +6,6 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_CHECK_CXX
   "/home/jake/CLionProjects/PA1/game.cpp" "/home/jake/CLionProjects/PA1/cmake-build-debug/CMakeFiles/PA1.dir/game.cpp.o"
   "/home/jake/CLionProjects/PA1/main.cpp" "/home/jake/CLionProjects/PA1/cmake-build-debug/CMakeFiles/PA1.dir/main.cpp.o"
-  "/home/jake/CLionProjects/PA1/profiles.cpp" "/home/jake/CLionProjects/PA1/cmake-build-debug/CMakeFiles/PA1.dir/profiles.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
