@@ -155,48 +155,47 @@ void game::add_command() {
 
     command new_cmd;
     cout << "Enter command name: " << endl;
-    cin >> new_cmd.cmd;
+    cin >> new_cmd.cmd; // add command text to the stuct
 
     cout << "Enter command description" << endl;
-    cin >> new_cmd.description;
+    cin >> new_cmd.description; // descriptption of the command
 
     fstream file;
-    file.open("commands.csv", ios::app);
+    file.open("commands.csv", ios::app); //open commands.csv file to write new command
 
-    if(file.fail())
+    if(file.fail()) // error handling
         cout << "Error opening file";
 
-    file << new_cmd.cmd << "," << new_cmd.description << "," << endl;
+    file << endl << new_cmd.cmd << "," << new_cmd.description << ","; // write to file
 
-    file.close();
+    file.close(); // close file stream
 }
 
 void game::insert_at_front(command new_cmd) {
 
-    listNode* new_node = new listNode();
+    listNode* new_node = new listNode(); // create new link list node
 
-    new_node->command_data = new_cmd;
+    new_node->command_data = new_cmd; // assign values to struct node
     new_node->next = head;
 
-    head = new_node;
+    head = new_node; // reset the head to head position
 }
 
-void game::remove_command(string input) {
+void game::remove_command(string input) { // input is a string containing the name of the command
 
-
-
-    listNode* temp = head;
+    listNode* temp = head; //create copy of head node
 
     while(temp->next->command_data.cmd != input) { // search by name
-        temp = temp->next;
+        temp = temp->next; // itterate though linked list
     }
 
         if(temp->next == nullptr)
             return; //if not found, then return
 
-            temp->next = temp->next->next;
+            temp->next = temp->next->next; // once found, skip the command node to be removed by pointing
+                                            // to the next one of the removed command
 
-    fstream output;
+    fstream output; // file stream output to commands.csv
     output.open("commands.csv", ios::out);
 
     if(output.fail())
@@ -204,7 +203,7 @@ void game::remove_command(string input) {
 
     while(head != nullptr) { //print out list putting head back to the front
         output << head->command_data.cmd << "," << head->command_data.description << "," << endl;
-        head = head->next;
+        head = head->next; // ittereate thought list to print
     }
     output.close();
 }
@@ -215,7 +214,7 @@ void game:: set_score(int val){
 
 command game::get_random_command() {
 
-    int location = rand() % 30;
+    int location = rand() % 30; // could be size of but 30 is the asssigned length of the list
     int i = 0;
     listNode* current = head;
 
@@ -223,7 +222,7 @@ command game::get_random_command() {
         if(i == location){
             return current->command_data;
         }
-        current = current->next;
+        current = current->next; // itterate through link list commands
         i++;
     }
 }
@@ -236,7 +235,7 @@ void game::exit(){
 
     fstream outfile;
     string line;
-
+                    // exit procedure
     outfile.open("profiles.csv", ios_base::app);
     outfile << username << "," << score << "," << endl;
     outfile.close();
