@@ -183,28 +183,24 @@ void game::insert_at_front(command new_cmd) {
 
 void game::remove_command(string input) {
 
+
+
+    listNode* temp = head;
+
+    while(temp->next->command_data.cmd != input) { // search by name
+        temp = temp->next;
+    }
+
+        if(temp->next == nullptr)
+            return; //if not found, then return
+
+            temp->next = temp->next->next;
+
     fstream output;
     output.open("commands.csv", ios::out);
 
     if(output.fail())
         cout << "Error opening file";
-
-    listNode* temp = head;
-
-    while(temp->next->command_data.cmd != input) // search by name
-        temp = temp->next;
-
-        if(temp->next == nullptr)
-            return; //if not found, then return
-
-        listNode *next;
-        next = temp->next->next; //move the node over 1
-
-        next = temp->next; // move the node back over
-
-    delete temp->next;
-
-    temp->next = next;
 
     while(head != nullptr) { //print out list putting head back to the front
         output << head->command_data.cmd << "," << head->command_data.description << "," << endl;
@@ -219,7 +215,7 @@ void game:: set_score(int val){
 
 command game::get_random_command() {
 
-    int location = rand() % 35;
+    int location = rand() % 30;
     int i = 0;
     listNode* current = head;
 
