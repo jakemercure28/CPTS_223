@@ -11,7 +11,7 @@
 using namespace std;
 
 // define default capacity of the queue
-#define SIZE 10
+#define SIZE 5
 
 // Class for queue
 class queue
@@ -23,15 +23,15 @@ class queue
     int count;		// current size of the queue
 
 public:
-    queue(int size = SIZE); 	// constructor
+    explicit queue(int size = SIZE); 	// constructor
     ~queue();   				// destructor
 
     void dequeue();
-    void enqueue(int x);
+    void enqueue(int item);
     int peek();
-    int size();
-    bool isEmpty();
-    bool isFull();
+    int size() const;
+    bool isEmpty() const;
+    bool isFull() const;
 };
 
 
@@ -98,19 +98,19 @@ int queue::peek()
 }
 
 // Utility function to return the size of the queue
-int queue::size()
+int queue::size() const
 {
     return count;
 }
 
 // Utility function to check if the queue is empty or not
-bool queue::isEmpty()
+bool queue::isEmpty() const
 {
     return (size() == 0);
 }
 
 // Utility function to check if the queue is full or not
-bool queue::isFull()
+bool queue::isFull() const
 {
     return (size() == capacity);
 }
