@@ -12,6 +12,14 @@ int main()
     testIsEmpty();
     testIsFull();
 
+    testSingleItemEnqueue();
+    testFiveItemEnqueue();
+
+    testSingleItemDequeue();
+    testFiveItemDequeue();
+
+    testSingleItemPeek();
+    testFiveItemPeek();
     return 0;
 }
 
