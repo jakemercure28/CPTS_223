@@ -100,7 +100,7 @@ int queue::peek()
 // Utility function to return the size of the queue
 int queue::size()
 {
-    return count + 1;
+    return count;
 }
 
 // Utility function to check if the queue is empty or not
@@ -112,6 +112,6 @@ bool queue::isEmpty()
 // Utility function to check if the queue is full or not
 bool queue::isFull()
 {
-    return (size()-1 == capacity);
+    return (size() == capacity);
 }
 #endif //CPTS_223_QUEUE_H

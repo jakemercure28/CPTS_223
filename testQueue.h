@@ -24,9 +24,10 @@ void testFiveItemPeek();
 
 /* TEST ID: Size queue check - SQC
  * Unit: queue::size()
- * Description: test to determine if queue::size() returns count + 1 = n
+ * Description: test to determine if queue::size() returns count of enqueued values
  * Test steps:
  *  1. Construct a queue object of size 5
+ *  2. enqueue 5 values
  *  2. Invoke queue::size()
  *  3. Conditionally evaluate the value returned by queue::size()
  * Test data: size = 5
@@ -41,6 +42,12 @@ void testSize(){
     queue q1(5);
 
     cout << "Checking size... precondition size = 5\n";
+
+    q1.enqueue(1);
+    q1.enqueue(1);
+    q1.enqueue(1);
+    q1.enqueue(1);
+    q1.enqueue(1);
 
     if(q1.size() == 5)
         cout << "Result: " << q1.size() << "\nTest passed.\n";
