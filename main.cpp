@@ -9,6 +9,8 @@ int main()
     // call your test functions here!
 
     testSize();
+    testIsEmpty();
+    testIsFull();
 
     return 0;
 }
