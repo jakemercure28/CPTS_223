@@ -19,7 +19,7 @@
  * Postcondition queue object is still size 5
  * Expected result: queue is size 5; 5 is returned
  *  Actual result: 1
- *  Status: failed
+ *  Status: passed
  */
 void testSize(){
 
@@ -52,7 +52,7 @@ void testSize(){
  * Postcondition queue object is still empty
  * Expected result: queue is empty; 1 is returned
  *  Actual result: queue is not empty; 0 is returned
- *  Status: failed
+ *  Status: passed
  */
 void testIsEmpty(){
 
@@ -77,7 +77,7 @@ void testIsEmpty(){
  *  4. Conditionally evaluate the value returned by queue::isFull()
  * Test data: size = 5
  * Precondition queue object is empty
- * Postcondition queue object is still full
+ * Postcondition queue object is full
  * Expected result: queue is full; 1 is returned
  *  Actual result: queue is full; 1 is returned
  *  Status: passed
@@ -116,7 +116,7 @@ void testIsFull(){
  * Postcondition queue object contains 1 item
  * Expected result: queue size is 1; 1 is returned. queue is not empty; 0 is returned
  *  Actual result: size is 0, 0 is returned. queue is not empty; 0 is returned
- *  Status: failed
+ *  Status: passed
  */
 
 void testSingleItemEnqueue(){
@@ -154,7 +154,7 @@ void testSingleItemEnqueue(){
  * Postcondition queue object contains 5 items
  * Expected result: queue size is 5; 5 is returned. queue is not empty; 0 is returned
  *  Actual result: size is 5, 5 is returned. queue is not empty; 0 is returned
- *  Status: failed
+ *  Status: passed
  */
 
 void testFiveItemEnqueue(){
@@ -195,8 +195,8 @@ void testFiveItemEnqueue(){
  * Precondition queue object is empty
  * Postcondition queue object is empty
  * Expected result: queue is empty; 1 is returned
- *  Actual result: queue is not empty; 0 is returned
- *  Status: failed
+ *  Actual result: queue is empty; 1 is returned
+ *  Status: passed
  */
 void testSingleItemDequeue(){
     queue q1(1);
@@ -269,8 +269,8 @@ void testFiveItemDequeue(){
 * Precondition queue object is empty
 * Postcondition queue object contains 1 item of value 8
 * Expected result: peek returns 8
-* Actual result: peek returns 1
-* Status: failed
+* Actual result: peek returns 8
+* Status: passed
 */
 
 void testSingleItemPeek(){
@@ -301,8 +301,8 @@ void testSingleItemPeek(){
 * Precondition queue object is empty
 * Postcondition queue object contains 1,2,3,4,5
 * Expected result: peek returns 1
-* Actual result: peek returns 5
-* Status: failed
+* Actual result: peek returns 1
+* Status: passed
 */
 
 void testFiveItemPeek(){
