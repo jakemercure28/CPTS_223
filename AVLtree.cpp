@@ -3,16 +3,18 @@
 
 using namespace std;
 
-void AVLtree::insert(int x) {
+template <typename T>
+void AVLtree<T>::insert(T x) {
     root = insertHelper(x, root);
 }
 
-AVLnode *AVLtree::insertHelper(int x, AVLnode *t) {
-    if (t == NULL) {
-        t = new AVLnode;
+template <typename T>
+AVLnode<T> *AVLtree<T>::insertHelper(T x, AVLnode<T> *t) {
+    if (t == nullptr) {
+        t = new AVLnode<T>;
         t->data = x;
         t->height = 0;
-        t->left = t->right = NULL;
+        t->left = t->right = nullptr;
     } else if (x < t->data) {
         t->left = insertHelper(x, t->left);
         if (heightHelper(t->left) - heightHelper(t->right) == 2) {
@@ -34,8 +36,9 @@ AVLnode *AVLtree::insertHelper(int x, AVLnode *t) {
     return t;
 }
 
-AVLnode *AVLtree::rightRotate(AVLnode *&t) {
-    AVLnode *u = t->left;
+template <typename T>
+AVLnode<T> *AVLtree<T>::rightRotate(AVLnode<T> *&t) {
+    AVLnode<T> *u = t->left;
     t->left = u->right;
     u->right = t;
     t->height = max(heightHelper(t->left), heightHelper(t->right)) + 1;
@@ -43,8 +46,9 @@ AVLnode *AVLtree::rightRotate(AVLnode *&t) {
     return u;
 }
 
-AVLnode *AVLtree::leftRotate(AVLnode *&t) {
-    AVLnode *u = t->right;
+template <typename T>
+AVLnode<T> *AVLtree<T>::leftRotate(AVLnode<T> *&t) {
+    AVLnode<T> *u = t->right;
     t->right = u->left;
     u->left = t;
     t->height = max(heightHelper(t->left), heightHelper(t->right)) + 1;
@@ -52,38 +56,44 @@ AVLnode *AVLtree::leftRotate(AVLnode *&t) {
     return u;
 }
 
-AVLnode *AVLtree::findMin(AVLnode *t) {
-    if (t == NULL)
-        return NULL;
-    else if (t->left == NULL)
+template <typename T>
+AVLnode<T> *AVLtree<T>::findMin(AVLnode<T> *t) {
+    if (t == nullptr)
+        return nullptr;
+    else if (t->left == nullptr)
         return t;
     else
         return findMin(t->left);
 }
 
-AVLnode *AVLtree::findMax(AVLnode *t) {
-    if (t == NULL)
-        return NULL;
-    else if (t->right == NULL)
+template <typename T>
+AVLnode<T> *AVLtree<T>::findMax(AVLnode<T> *t) {
+    if (t == nullptr)
+        return nullptr;
+    else if (t->right == nullptr)
         return t;
     else
         return findMax(t->right);
 }
 
-int AVLtree::height() {
+template <typename T>
+int AVLtree<T>::height() {
     return heightHelper(root);
 }
 
-int AVLtree::heightHelper(AVLnode *t) {
-    return (t == NULL ? -1 : t->height);
+template <typename T>
+int AVLtree<T>::heightHelper(AVLnode<T> *t) {
+    return (t == nullptr ? -1 : t->height);
 }
 
-bool AVLtree::validate() {
+template <typename T>
+bool AVLtree<T>::validate() {
     return validateHelper(root);
 }
 
-bool AVLtree::validateHelper(AVLnode *root) {
-    if (root == NULL)
+template <typename T>
+bool AVLtree<T>::validateHelper(AVLnode<T> *root) {
+    if (root == nullptr)
         return 1;
 
     int lNode = heightHelper(root->left);
@@ -93,8 +103,9 @@ bool AVLtree::validateHelper(AVLnode *root) {
     return 0;
 }
 
-bool AVLtree::containsHelper(AVLnode *root, int val){
-    if (root == NULL)
+template <typename T>
+bool AVLtree<T>::containsHelper(AVLnode<T> *root, T val){
+    if (root == nullptr)
         return false;
     if (val == root->data)
         return true;
@@ -102,6 +113,8 @@ bool AVLtree::containsHelper(AVLnode *root, int val){
         return containsHelper(root->left, val);
     return containsHelper(root->right, val);
 }
-bool AVLtree::contains(int val) {
+
+template <typename T>
+bool AVLtree<T>::contains(T val) {
     return containsHelper(root, val);
 }

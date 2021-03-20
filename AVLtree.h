@@ -9,36 +9,38 @@
 
 using namespace std;
 
-
+template <typename T>
 class AVLtree {
-    AVLnode *root;
+
+    AVLnode<T> *root;
 public:
 
-    AVLtree() : root(nullptr) {}
+    AVLtree<T>(){
 
-    AVLnode *insertHelper(int x, AVLnode *t);
+    }
+    AVLnode<T> *insertHelper(T x, AVLnode<T> *t);
 
-    AVLnode *rightRotate(AVLnode *&t);
+    AVLnode<T> *rightRotate(AVLnode<T> *&t);
 
-    AVLnode *leftRotate(AVLnode *&t);
+    AVLnode<T> *leftRotate(AVLnode<T> *&t);
 
-    AVLnode *findMin(AVLnode *t);
+    AVLnode<T> *findMin(AVLnode<T> *t);
 
-    AVLnode *findMax(AVLnode *t);
+    AVLnode<T> *findMax(AVLnode<T> *t);
 
     int height();
 
-    int heightHelper(AVLnode *t);
+    int heightHelper(AVLnode<T> *t);
 
     bool validate();
 
-    bool validateHelper(AVLnode *root);
+    bool validateHelper(AVLnode<T> *root);
 
-    void insert(int x);
+    void insert(T x);
 
-    bool containsHelper(AVLnode *root, int val);
+    bool containsHelper(AVLnode<T> *root, T val);
 
-    bool contains(int val);
+    bool contains(T val);
 
 
 };

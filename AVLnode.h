@@ -5,16 +5,17 @@
 #ifndef CPTS_223_AVLNODE_H
 #define CPTS_223_AVLNODE_H
 
+template <typename T>
 class AVLnode
 {
 public:
-    int data;
+    T data;
     AVLnode *left;
     AVLnode *right;
     int height;
 
-    AVLnode(){
-        data = 0;
+    AVLnode(T val){
+        data = val;
         left = nullptr;
         right = nullptr;
         height = 0;

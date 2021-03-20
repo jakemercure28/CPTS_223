@@ -7,7 +7,7 @@ using namespace std;
 
 int main()
 {
-    AVLtree t;
+    AVLtree<int> t;
     t.insert(20);
     t.insert(25);
     t.insert(15);
