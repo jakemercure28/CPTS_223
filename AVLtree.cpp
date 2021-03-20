@@ -3,7 +3,7 @@
 
 using namespace std;
 
-    AVLnode* AVLtree::insert(int x, AVLnode* t)
+    AVLnode* AVLtree::insertHelper(int x, AVLnode* t)
     {
         if(t == NULL)
         {
@@ -14,7 +14,7 @@ using namespace std;
         }
         else if(x < t->data)
         {
-            t->left = insert(x, t->left);
+            t->left = insertHelper(x, t->left);
             if(heightHelper(t->left) - heightHelper(t->right) == 2)
             {
                 if(x < t->left->data)
@@ -25,7 +25,7 @@ using namespace std;
         }
         else if(x > t->data)
         {
-            t->right = insert(x, t->right);
+            t->right = insertHelper(x, t->right);
             if(heightHelper(t->right) - heightHelper(t->left) == 2)
             {
                 if(x > t->right->data)

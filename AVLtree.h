@@ -16,7 +16,7 @@ public:
 
     AVLtree(): root(nullptr){}
 
-    AVLnode* insert(int x, AVLnode* t);
+    AVLnode* insertHelper(int x, AVLnode* t);
     AVLnode* singleRightRotate(AVLnode* &t);
     AVLnode* singleLeftRotate(AVLnode* &t);
     AVLnode* doubleLeftRotate(AVLnode* &t);
@@ -32,7 +32,7 @@ public:
 
     void insert(int x)
     {
-        root = insert(x, root);
+        root = insertHelper(x, root);
     }
 
 
