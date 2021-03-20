@@ -6,7 +6,6 @@
 #define CPTS_223_AVLNODE_H
 
 
-// create template too
 class AVLnode
 {
 public:
@@ -14,6 +13,13 @@ public:
     AVLnode *left;
     AVLnode *right;
     int height;
+
+    AVLnode(){
+        data = 0;
+        left = nullptr;
+        right = nullptr;
+        height = 0;
+    }
 };
 
 #endif //CPTS_223_AVLNODE_H

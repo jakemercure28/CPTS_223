@@ -1,7 +1,29 @@
 //
 // Created by jake on 3/20/21.
 //
-int main(){
+#include "AVLtree.h"
+
+using namespace std;
+
+int main()
+{
+    //AVLtree<int> *t = new AVLtree<int>();
+    AVLtree t;
+    t.insert(20);
+    t.insert(25);
+    t.insert(15);
+    t.insert(10);
+    t.insert(30);
+    t.insert(5);
+    t.insert(35);
+    t.insert(67);
+    t.insert(43);
+    t.insert(21);
+    t.insert(10);
+    t.insert(89);
+    t.insert(38);
+    t.insert(69);
+    t.display();
 
     return 0;
 }
