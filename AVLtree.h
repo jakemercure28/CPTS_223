@@ -17,10 +17,8 @@ public:
     AVLtree(): root(nullptr){}
 
     AVLnode* insertHelper(int x, AVLnode* t);
-    AVLnode* singleRightRotate(AVLnode* &t);
-    AVLnode* singleLeftRotate(AVLnode* &t);
-    AVLnode* doubleLeftRotate(AVLnode* &t);
-    AVLnode* doubleRightRotate(AVLnode* &t);
+    AVLnode* rightRotate(AVLnode* &t);
+    AVLnode* leftRotate(AVLnode* &t);
     AVLnode* findMin(AVLnode* t);
     AVLnode* findMax(AVLnode* t);
 
@@ -30,10 +28,7 @@ public:
     bool validate();
     bool validateHelper(AVLnode *root);
 
-    void insert(int x)
-    {
-        root = insertHelper(x, root);
-    }
+    void insert(int x);
 
 
 };
