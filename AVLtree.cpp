@@ -94,9 +94,12 @@ bool AVLtree::validateHelper(AVLnode *root) {
 }
 
 bool AVLtree::containsHelper(AVLnode *root, int val){
-    if (root == NULL) return false;
-    if (val == root->data) return true;
-    if (val < root->data) return containsHelper(root->left, val);
+    if (root == NULL)
+        return false;
+    if (val == root->data)
+        return true;
+    if (val < root->data)
+        return containsHelper(root->left, val);
     return containsHelper(root->right, val);
 }
 bool AVLtree::contains(int val) {
