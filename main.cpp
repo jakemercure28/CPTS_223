@@ -7,7 +7,6 @@ using namespace std;
 
 int main()
 {
-    //AVLtree<int> *t = new AVLtree<int>();
     AVLtree t;
     t.insert(20);
     t.insert(25);
@@ -23,7 +22,8 @@ int main()
     t.insert(89);
     t.insert(38);
     t.insert(69);
-    t.display();
+    cout << t.validate();
+
 
     return 0;
 }

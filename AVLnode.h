@@ -5,7 +5,6 @@
 #ifndef CPTS_223_AVLNODE_H
 #define CPTS_223_AVLNODE_H
 
-
 class AVLnode
 {
 public:

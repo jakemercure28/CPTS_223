@@ -15,7 +15,7 @@ class AVLtree
 public:
 
     AVLtree(): root(nullptr){}
-    void makeEmpty(AVLnode* t);
+
     AVLnode* insert(int x, AVLnode* t);
     AVLnode* singleRightRotate(AVLnode* &t);
     AVLnode* singleLeftRotate(AVLnode* &t);
@@ -24,18 +24,16 @@ public:
     AVLnode* findMin(AVLnode* t);
     AVLnode* findMax(AVLnode* t);
     int height(AVLnode* t);
-    void inorder(AVLnode* t);
+
+
+    bool validate();
+    bool validateHelper(AVLnode *root);
 
     void insert(int x)
     {
         root = insert(x, root);
     }
 
-    void display()
-    {
-        inorder(root);
-        cout << endl;
-    }
 
 };
 /*

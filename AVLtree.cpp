@@ -3,15 +3,6 @@
 
 using namespace std;
 
-    void AVLtree::makeEmpty(AVLnode* t)
-    {
-        if(t == NULL)
-            return;
-        makeEmpty(t->left);
-        makeEmpty(t->right);
-        delete t;
-    }
-
     AVLnode* AVLtree::insert(int x, AVLnode* t)
     {
         if(t == NULL)
@@ -105,11 +96,16 @@ using namespace std;
         return (t == NULL ? -1 : t->height);
     }
 
-    void AVLtree::inorder(AVLnode* t)
-    {
-        if(t == NULL)
-            return;
-        inorder(t->left);
-        cout << t->data << " ";
-        inorder(t->right);
+    bool AVLtree::validateHelper(AVLnode* root){
+        if(root == NULL)
+            return 1;
+
+        int lNode = height(root->left);
+        int rNode = height(root->right);
+        if(abs(lNode-rNode) <= 1 && validateHelper(root->left) && validateHelper(root->right))
+            return 1;
+        return 0;
+    }
+    bool AVLtree::validate(){
+        return validateHelper(root);
     }
