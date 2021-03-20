@@ -7,24 +7,21 @@ using namespace std;
 
 int main()
 {
-    AVLtree<int> t;
-    t.insert(20);
-    t.insert(25);
-    t.insert(15);
-    t.insert(10);
-    t.insert(30);
-    t.insert(5);
-    t.insert(35);
-    t.insert(67);
-    t.insert(43);
-    t.insert(21);
-    t.insert(10);
-    t.insert(89);
-    t.insert(38);
-    t.insert(69);
-    cout << t.contains(99) << endl;
-    cout << t.height() << endl;
-    cout << t.validate() << endl;
+    AVLtree<int> t1;
+    AVLtree<int> t2;
+    AVLtree<int> t3;
 
+    for(int i = 0; i < 50;i++)
+        t1.insert(i);
+
+    for(int i = 50;i > 1; i--)
+        t2.insert(i);
+
+    //for(int i = 0;i < 50;i++)
+   // t3.insert(i);
+
+    cout << "t1 height: " << t1.height() << endl;
+    cout << "t2 height: " << t2.height() << endl;
+    cout << "t3 height: " << t3.height() << endl;
     return 0;
 }

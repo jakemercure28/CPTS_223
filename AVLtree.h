@@ -15,9 +15,7 @@ protected:
     AVLnode<T> *root;
 public:
 
-    AVLtree<T>(){
-
-    }
+    AVLtree<T>():root(nullptr){}
 
     ~AVLtree<T>(){
         delete root;
