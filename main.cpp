@@ -23,5 +23,11 @@ int main()
     cout << "t1 height: " << t1.height() << endl;
     cout << "t2 height: " << t2.height() << endl;
     cout << "t3 height: " << t3.height() << endl;
+
+    cout << "t1 validation: " << t1.validate() << endl;
+    cout << "t2 validation: " << t2.validate() << endl;
+    cout << "t3 validation: " << t3.validate() << endl;
+
+
     return 0;
 }
