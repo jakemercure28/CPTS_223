@@ -6,29 +6,39 @@
 
 #include "AVLnode.h"
 #include <iostream>
+
 using namespace std;
 
 
-class AVLtree
-{
-    AVLnode* root;
+class AVLtree {
+    AVLnode *root;
 public:
 
-    AVLtree(): root(nullptr){}
+    AVLtree() : root(nullptr) {}
 
-    AVLnode* insertHelper(int x, AVLnode* t);
-    AVLnode* rightRotate(AVLnode* &t);
-    AVLnode* leftRotate(AVLnode* &t);
-    AVLnode* findMin(AVLnode* t);
-    AVLnode* findMax(AVLnode* t);
+    AVLnode *insertHelper(int x, AVLnode *t);
+
+    AVLnode *rightRotate(AVLnode *&t);
+
+    AVLnode *leftRotate(AVLnode *&t);
+
+    AVLnode *findMin(AVLnode *t);
+
+    AVLnode *findMax(AVLnode *t);
 
     int height();
-    int heightHelper(AVLnode* t);
+
+    int heightHelper(AVLnode *t);
 
     bool validate();
+
     bool validateHelper(AVLnode *root);
 
     void insert(int x);
+
+    bool containsHelper(AVLnode *root, int val);
+
+    bool contains(int val);
 
 
 };
