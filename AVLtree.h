@@ -23,8 +23,9 @@ public:
     AVLnode* doubleRightRotate(AVLnode* &t);
     AVLnode* findMin(AVLnode* t);
     AVLnode* findMax(AVLnode* t);
-    int height(AVLnode* t);
 
+    int height();
+    int heightHelper(AVLnode* t);
 
     bool validate();
     bool validateHelper(AVLnode *root);

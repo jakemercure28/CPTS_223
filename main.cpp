@@ -22,8 +22,8 @@ int main()
     t.insert(89);
     t.insert(38);
     t.insert(69);
-    cout << t.validate();
-
+    cout << t.height() << endl;
+    cout << t.validate() << endl;
 
     return 0;
 }

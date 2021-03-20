@@ -15,7 +15,7 @@ using namespace std;
         else if(x < t->data)
         {
             t->left = insert(x, t->left);
-            if(height(t->left) - height(t->right) == 2)
+            if(heightHelper(t->left) - heightHelper(t->right) == 2)
             {
                 if(x < t->left->data)
                     t = singleRightRotate(t);
@@ -26,7 +26,7 @@ using namespace std;
         else if(x > t->data)
         {
             t->right = insert(x, t->right);
-            if(height(t->right) - height(t->left) == 2)
+            if(heightHelper(t->right) - heightHelper(t->left) == 2)
             {
                 if(x > t->right->data)
                     t = singleLeftRotate(t);
@@ -35,7 +35,7 @@ using namespace std;
             }
         }
 
-        t->height = max(height(t->left), height(t->right))+1;
+        t->height = max(heightHelper(t->left), heightHelper(t->right))+1;
         return t;
     }
 
@@ -44,8 +44,8 @@ using namespace std;
         AVLnode* u = t->left;
         t->left = u->right;
         u->right = t;
-        t->height = max(height(t->left), height(t->right))+1;
-        u->height = max(height(u->left), t->height)+1;
+        t->height = max(heightHelper(t->left), heightHelper(t->right))+1;
+        u->height = max(heightHelper(u->left), t->height)+1;
         return u;
     }
 
@@ -54,8 +54,8 @@ using namespace std;
         AVLnode* u = t->right;
         t->right = u->left;
         u->left = t;
-        t->height = max(height(t->left), height(t->right))+1;
-        u->height = max(height(t->right), t->height)+1 ;
+        t->height = max(heightHelper(t->left), heightHelper(t->right))+1;
+        u->height = max(heightHelper(t->right), t->height)+1 ;
         return u;
     }
 
@@ -90,18 +90,20 @@ using namespace std;
         else
             return findMax(t->right);
     }
-
-    int AVLtree::height(AVLnode* t)
-    {
+    int AVLtree::heightHelper(AVLnode* t){
         return (t == NULL ? -1 : t->height);
+    }
+    int AVLtree::height()
+    {
+        return heightHelper(root);
     }
 
     bool AVLtree::validateHelper(AVLnode* root){
         if(root == NULL)
             return 1;
 
-        int lNode = height(root->left);
-        int rNode = height(root->right);
+        int lNode = heightHelper(root->left);
+        int rNode = heightHelper(root->right);
         if(abs(lNode-rNode) <= 1 && validateHelper(root->left) && validateHelper(root->right))
             return 1;
         return 0;
