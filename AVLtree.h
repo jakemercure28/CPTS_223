@@ -11,12 +11,16 @@ using namespace std;
 
 template <typename T>
 class AVLtree {
-
+protected:
     AVLnode<T> *root;
 public:
 
     AVLtree<T>(){
 
+    }
+
+    ~AVLtree<T>(){
+        delete root;
     }
     AVLnode<T> *insertHelper(T x, AVLnode<T> *t);
 

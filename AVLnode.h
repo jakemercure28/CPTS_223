@@ -14,11 +14,18 @@ public:
     AVLnode *right;
     int height;
 
-    AVLnode(T val){
-        data = val;
+    AVLnode<T>(){
+        data = 0;
         left = nullptr;
         right = nullptr;
         height = 0;
+    }
+
+    ~AVLnode(){
+        this->data = 0;
+        this->left = nullptr;
+        this->right = nullptr;
+        this->height = 0;
     }
 };
 

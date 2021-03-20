@@ -118,3 +118,6 @@ template <typename T>
 bool AVLtree<T>::contains(T val) {
     return containsHelper(root, val);
 }
+
+template class AVLnode<int>;
+template class AVLtree<int>;
