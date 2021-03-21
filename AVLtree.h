@@ -26,10 +26,6 @@ public:
 
     AVLnode<T> *leftRotate(AVLnode<T> *&node);
 
-    AVLnode<T> *findMin(AVLnode<T> *node);
-
-    AVLnode<T> *findMax(AVLnode<T> *node);
-
     int height();
 
     int heightHelper(AVLnode<T> *node);

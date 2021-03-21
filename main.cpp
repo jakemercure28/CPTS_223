@@ -1,5 +1,8 @@
 //
 // Created by jake on 3/20/21.
+// This program builds using CLion and Cmake.
+// Ive attempted to build it in Visual studio code but would recommend using Cmake.
+// I dont know how to use cmake in Visual Studio Code.
 //
 #include "AVLtree.h"
 #include <vector>
@@ -17,22 +20,22 @@ int main() {
     vector<int> v(50);
     int j = 0;
 
-    for (int i = 1; i < 100; i += 2) {
+    for (int i = 1; i < 100; i += 2) { // shuffle numbers
         v[j] = i;
         j++;
     }
 
-    random_device rd;
+    random_device rd; // shuffle numbers
     mt19937 g(rd());
     shuffle(v.begin(), v.end(), g);
 
-    for (int i = 1; i < 100; i += 2)
+    for (int i = 1; i < 100; i += 2) // add odd numbers in ascending order
         t1.insert(i);
 
-    for (int i = 99; i > 0; i -= 2)
+    for (int i = 99; i > 0; i -= 2) // descending order
         t2.insert(i);
 
-    for (auto &it : v)
+    for (auto &it : v)  // shuffled
         t3.insert(it);
 
     cout << "t1 height: " << t1.height() << endl;
