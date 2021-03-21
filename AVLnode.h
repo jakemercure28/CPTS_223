@@ -15,18 +15,17 @@ public:
     int height;
 
     AVLnode<T>(){
-        data = 0;
-        left = nullptr;
-        right = nullptr;
-        height = 0;
+        this->data = 0;
+        this->left = nullptr;
+        this->right = nullptr;
+        this->height = 1;
     }
 
     ~AVLnode(){
         this->data = 0;
         this->left = nullptr;
         this->right = nullptr;
-        this->height = 0;
+        this->height = 1;
     }
 };
-
 #endif //CPTS_223_AVLNODE_H

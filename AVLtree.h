@@ -20,25 +20,25 @@ public:
     ~AVLtree<T>(){
         delete root;
     }
-    AVLnode<T> *insertHelper(T x, AVLnode<T> *t);
+    AVLnode<T> *insertHelper(T val, AVLnode<T> *node);
 
-    AVLnode<T> *rightRotate(AVLnode<T> *&t);
+    AVLnode<T> *rightRotate(AVLnode<T> *&node);
 
-    AVLnode<T> *leftRotate(AVLnode<T> *&t);
+    AVLnode<T> *leftRotate(AVLnode<T> *&node);
 
-    AVLnode<T> *findMin(AVLnode<T> *t);
+    AVLnode<T> *findMin(AVLnode<T> *node);
 
-    AVLnode<T> *findMax(AVLnode<T> *t);
+    AVLnode<T> *findMax(AVLnode<T> *node);
 
     int height();
 
-    int heightHelper(AVLnode<T> *t);
+    int heightHelper(AVLnode<T> *node);
 
     bool validate();
 
     bool validateHelper(AVLnode<T> *root);
 
-    void insert(T x);
+    void insert(T val);
 
     bool containsHelper(AVLnode<T> *root, T val);
 
@@ -46,26 +46,5 @@ public:
 
 
 };
-/*
-private:
-    AVLnode* node;
-
-public:
-    AVLtree();
-    int height(AVLnode *N);
-   // void insert(int);
-    bool contains(int);
-    bool validate();
-
-    AVLnode* newNode(int key);
-    AVLnode *rightRotate(AVLnode *y);
-    AVLnode *leftRotate(AVLnode *x);
-    int getBalance(AVLnode *N);
-    AVLnode* insert(AVLnode* node, int key);
-    void preOrder(AVLnode *root);
-
-    void insertHelper(AVLnode*, int key);
-};
-*/
 #endif //CPTS_223_AVLTREE_H
 
