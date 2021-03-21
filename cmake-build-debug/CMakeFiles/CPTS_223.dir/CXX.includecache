@@ -1,0 +1,28 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/jake/CLionProjects/CPTS_223/AVLnode.h
+
+/home/jake/CLionProjects/CPTS_223/AVLtree.h
+AVLnode.h
+/home/jake/CLionProjects/CPTS_223/AVLnode.h
+iostream
+-
+
+/home/jake/CLionProjects/CPTS_223/main.cpp
+AVLtree.h
+/home/jake/CLionProjects/CPTS_223/AVLtree.h
+vector
+-
+iterator
+-
+random
+-
+algorithm
+-
+
