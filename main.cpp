@@ -24,12 +24,15 @@ int main(int argc, char* argv[])
      * Map scenario 1
      ****************/
 
+    cout << "Map scenario 1\n\n";
     //inserting into map Key: integer, Data: TwitterData data type
+    cout << "Inserting data into map...\n";
     map <int, TwitterData> m1;
     for (int i =0; i < 5;i++)
             m1.insert(pair<int, TwitterData>(i , twitter_data[i]));
 
     //printing map
+    cout << "Printing map...\n";
     map<int, TwitterData>::iterator itr;
     for(itr = m1.begin();itr != m1.end();itr++)
         cout << itr->first << '\t' << itr->second.print() << '\n';
