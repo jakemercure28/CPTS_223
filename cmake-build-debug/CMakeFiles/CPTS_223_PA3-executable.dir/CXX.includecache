@@ -1,0 +1,46 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/jake/CLionProjects/CPTS_223/ChainingHash.h
+iostream
+-
+vector
+-
+list
+-
+stdexcept
+-
+Hash.h
+/home/jake/CLionProjects/CPTS_223/Hash.h
+
+/home/jake/CLionProjects/CPTS_223/Hash.h
+math.h
+-
+
+/home/jake/CLionProjects/CPTS_223/ProbingHash.h
+vector
+-
+stdexcept
+-
+Hash.h
+/home/jake/CLionProjects/CPTS_223/Hash.h
+
+/home/jake/CLionProjects/CPTS_223/main.cpp
+map
+-
+string
+-
+chrono
+-
+cassert
+-
+ChainingHash.h
+/home/jake/CLionProjects/CPTS_223/ChainingHash.h
+ProbingHash.h
+/home/jake/CLionProjects/CPTS_223/ProbingHash.h
+
